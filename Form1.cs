@@ -133,7 +133,12 @@ namespace calculator
             operators = 3; //選擇「除」號
         }
 
-
+        private void btnDot_Click(object sender, EventArgs e)
+        {
+            if (txtNumber.Text.IndexOf(".") == -1)
+           
+            txtNumber.Text = txtNumber.Text + ".";
+        }
 
         private void btnEqual_Click(object sender, EventArgs e)
         {

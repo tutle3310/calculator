@@ -18,8 +18,8 @@ namespace calculator
 
             txtNumber.Text = "0";
         }
+        Calculate calculate = new Calculate();
 
-        float firstNumber, secondNumber;
         int operators = -1;
         private void Add_Number(string _number)
         {
@@ -30,7 +30,7 @@ namespace calculator
 
         private void Select_Operator(int _operators)
         {
-            firstNumber = Convert.ToSingle(txtNumber.Text);
+            calculate.firstNumber = Convert.ToSingle(txtNumber.Text);
             txtNumber.Text = "0";
             operators = _operators;
         }
@@ -128,31 +128,31 @@ namespace calculator
         private void btnEqual_Click(object sender, EventArgs e)
         {
             float finalResults = 0f; //宣告最後計算結果變數
-            secondNumber = Convert.ToSingle(txtNumber.Text); //將輸入文字框轉換成浮點數，存入第二個數字的全域變數
+            calculate.secondNumber = Convert.ToSingle(txtNumber.Text); //將輸入文字框轉換成浮點數，存入第二個數字的全域變數
 
             //依照四則運算符號的選擇，進行加減乘除
             switch (operators)
             {
                 case 0:
-                    finalResults = firstNumber + secondNumber;
+                    finalResults = calculate.Add();
                     break;
                 case 1:
-                    finalResults = firstNumber - secondNumber;
+                    finalResults = calculate.Subtract();
                     break;
                 case 2:
-                    finalResults = firstNumber * secondNumber;
+                    finalResults = calculate.Multiply();
                     break;
                 case 3:
-                    finalResults = firstNumber / secondNumber;
+                    finalResults = calculate.Divide();
                     break;
             }
 
             txtNumber.Text = string.Format("{0:0.##########}", finalResults); //在輸入文字框中，顯示最後計算結果，並且轉換成格式化的字串內容
 
             //重置所有全域變數
-            firstNumber = 0f;
-            secondNumber = 0f;
-            operators = -1;
+            //firstNumber = 0f;
+            //secondNumber = 0f;
+            //operators = -1;
         }
     
     }
